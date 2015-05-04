@@ -1,0 +1,16 @@
+.idea/
+.vagrant/
+logs/
+projects/
+sys/**/node_modules
+_cache/
+/tmp/**/*
+log.txt
+manifest.json
+uploads.tar.gz
+database.sql.gz
+sys/hosts.json
+sys/portmap.json
+Customfile
+aliases
+!config/aliases

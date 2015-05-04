@@ -1,0 +1,25 @@
+{
+  "name": "derrick-server",
+  "version": "0.1.0",
+  "description": "Server utility for Derrick's Docker operations.",
+  "main": "derrick-server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "bin": {
+    "derrick-server": "derrick-server.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.8.1",
+    "http-proxy": "^1.11.1",
+    "lodash": "^3.7.0",
+    "mysql": "^2.6.2",
+    "portfinder": "^0.4.0",
+    "promise": "^7.0.1",
+    "socket.io": "^1.3.5",
+    "winston": "^0.8.3",
+    "mkdirp": "^0.5.0"
+  }
+}
