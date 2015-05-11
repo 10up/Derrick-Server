@@ -2,7 +2,7 @@
 .vagrant/
 logs/
 projects/
-sys/**/node_modules
+node_modules
 _cache/
 /tmp/**/*
 log.txt
