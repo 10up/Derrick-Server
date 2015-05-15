@@ -1,6 +1,6 @@
 {
   "name": "derrick-server",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Server utility for Derrick's Docker operations.",
   "main": "derrick-server.js",
   "scripts": {},
