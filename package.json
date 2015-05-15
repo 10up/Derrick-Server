@@ -3,10 +3,34 @@
   "version": "0.1.0",
   "description": "Server utility for Derrick's Docker operations.",
   "main": "derrick-server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "scripts": {},
+  "author": {
+    "name": "Eric Mann",
+    "email": "eric.mann@10up.com",
+    "url": "http://10up.com"
   },
-  "author": "",
+  "contributors": [
+    {
+      "name": "Luke Woodward",
+      "email": "luke.woodward@10up.com",
+      "url": "https://github.com/lkwdwrd"
+    },
+    {
+      "name": "Eric Mann",
+      "email": "eric.mann@10up.com",
+      "url": "https://github.com/ericmann"
+    },
+    {
+      "name": "John Bloch",
+      "email": "john.bloch@10up.com",
+      "url": "https://github.com/johnpbloch"
+    },
+    {
+      "name": "Taylor Lovett",
+      "email": "taylor.lovett@10up.com",
+      "url": "https://github.com/tlovett1"
+    }
+  ],
   "bin": {
     "derrick-server": "derrick-server.js"
   },
