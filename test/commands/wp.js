@@ -27,12 +27,12 @@ var socketStub = {
 /**
  * Test suite for the composer command
  */
-describe( 'composer', function() {
+describe( 'wp', function() {
 
-	it( 'Fail because no composer.json', function( done ) {
+	it( 'Fail because no manifest.lock', function( done ) {
 
 		var composer = proxyquire(
-			'../../commands/composer',
+			'../../commands/wp',
 			{
 				winston: winstonStub,
 				fs: {
@@ -60,7 +60,7 @@ describe( 'composer', function() {
 	it( 'Command outputs and exits successfully', function( done ) {
 
 		var composer = proxyquire(
-			'../../commands/composer',
+			'../../commands/wp',
 			{
 				winston: winstonStub,
 				fs: {
@@ -74,7 +74,7 @@ describe( 'composer', function() {
 			}
 		);
 
-		mySpawn.setDefault( mySpawn.simple( 0, 'composer output' ) );
+		mySpawn.setDefault( mySpawn.simple( 0, 'wp output' ) );
 
 		composer( {
 			params: {
@@ -88,7 +88,7 @@ describe( 'composer', function() {
 	it( 'Command outputs and exits unsuccessfully', function( done ) {
 
 		var composer = proxyquire(
-			'../../commands/composer',
+			'../../commands/wp',
 			{
 				winston: winstonStub,
 				fs: {
@@ -102,17 +102,16 @@ describe( 'composer', function() {
 			}
 		);
 
-		mySpawn.setDefault( mySpawn.simple( 1, 'composer output' ) );
+		mySpawn.setDefault( mySpawn.simple( 0, 'wp output' ) );
 
 		composer( {
 			params: {
 				path: 'test'
 			}
 		}, socketStub ).then( function() {
-
-		}, function() {
+			// Command still fulfills when exit is unsuccessful
 			done();
-		});
+		} );
 	} );
 
 	it( 'Emits data properly to socket', function( done ) {
@@ -127,7 +126,7 @@ describe( 'composer', function() {
 		};
 
 		var composer = proxyquire(
-			'../../commands/composer',
+			'../../commands/wp',
 			{
 				winston: winstonStub,
 				fs: {
