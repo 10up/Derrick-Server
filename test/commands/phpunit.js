@@ -25,18 +25,41 @@ var socketStub = {
 };
 
 /**
- * Test suite for the wp command
+ * Test suite for the phpunit command
  */
-describe( 'wp', function() {
+describe( 'phpunit', function() {
+
+	it( 'Fail because no project', function( done ) {
+
+		var phpunit = proxyquire(
+			'../../commands/phpunit',
+			{
+				winston: winstonStub,
+				child_process: {
+					spawn: mySpawn
+				}
+			}
+		);
+
+		phpunit( {
+			params: {
+				path: 'test'
+			}
+		}, socketStub ).then( function() {
+			// Command proceeded when it shouldn't have
+		}, function() {
+			done();
+		});
+	} );
 
 	it( 'Fail because no manifest.lock', function( done ) {
 
-		var composer = proxyquire(
-			'../../commands/wp',
+		var phpunit = proxyquire(
+			'../../commands/phpunit',
 			{
 				winston: winstonStub,
 				fs: {
-					existsSync: function() {
+					readFileSync: function() {
 						return false;
 					}
 				},
@@ -46,7 +69,7 @@ describe( 'wp', function() {
 			}
 		);
 
-		composer( {
+		phpunit( {
 			params: {
 				path: 'test'
 			}
@@ -59,46 +82,18 @@ describe( 'wp', function() {
 
 	it( 'Command outputs and exits successfully', function( done ) {
 
-		var composer = proxyquire(
-			'../../commands/wp',
+		var phpunit = proxyquire(
+			'../../commands/phpunit',
 			{
 				winston: winstonStub,
 				fs: {
-					existsSync: function() {
-						return true;
-					}
-				},
-				child_process: {
-					spawn: mySpawn
-				}
-			}
-		);
-
-		mySpawn.setDefault( mySpawn.simple( 0, 'wp output' ) );
-
-		composer( {
-			params: {
-				path: 'test'
-			}
-		}, socketStub ).then( function() {
-			done();
-		});
-	} );
-
-	it( 'Command outputs and exits unsuccessfully', function( done ) {
-
-		var composer = proxyquire(
-			'../../commands/wp',
-			{
-				winston: winstonStub,
-				fs: {
-					existsSync: function() {
-						return {
+					readFileSync: function() {
+						return JSON.stringify( {
 							"resourceLocations": {
 								"wp-config.php": "projects/wielers/config/wp-config.php",
 								"wp-content/uploads": "projects/wielers/uploads"
 							},
-						};
+						} );
 					}
 				},
 				child_process: {
@@ -107,14 +102,49 @@ describe( 'wp', function() {
 			}
 		);
 
-		mySpawn.setDefault( mySpawn.simple( 0, 'wp output' ) );
+		mySpawn.setDefault( mySpawn.simple( 0, 'phpunit output' ) );
 
-		composer( {
+		phpunit( {
 			params: {
-				path: 'test'
+				path: 'test',
+				rawArgs: 'argument'
 			}
 		}, socketStub ).then( function() {
-			// Command still fulfills when exit is unsuccessful
+			done();
+		} );
+	} );
+
+	it( 'Command outputs and exits unsuccessfully', function( done ) {
+
+		var phpunit = proxyquire(
+			'../../commands/phpunit',
+			{
+				winston: winstonStub,
+				fs: {
+					readFileSync: function() {
+						return JSON.stringify( {
+							"resourceLocations": {
+								"wp-config.php": "projects/wielers/config/wp-config.php",
+								"wp-content/uploads": "projects/wielers/uploads"
+							},
+						} );
+					}
+				},
+				child_process: {
+					spawn: mySpawn
+				}
+			}
+		);
+
+		mySpawn.setDefault( mySpawn.simple( 1, 'phpunit output' ) );
+
+		phpunit( {
+			params: {
+				path: 'test',
+				rawArgs: 'argument'
+			}
+		}, socketStub ).then( function() {
+			// Still fulfills even though there is an error
 			done();
 		} );
 	} );
@@ -130,13 +160,18 @@ describe( 'wp', function() {
 			}
 		};
 
-		var composer = proxyquire(
-			'../../commands/wp',
+		var phpunit = proxyquire(
+			'../../commands/phpunit',
 			{
 				winston: winstonStub,
 				fs: {
-					existsSync: function() {
-						return true;
+					readFileSync: function() {
+						return JSON.stringify( {
+							"resourceLocations": {
+								"wp-config.php": "projects/wielers/config/wp-config.php",
+								"wp-content/uploads": "projects/wielers/uploads"
+							},
+						} );
 					}
 				},
 				child_process: {
@@ -147,9 +182,10 @@ describe( 'wp', function() {
 
 		mySpawn.setDefault( mySpawn.simple( 0, 'test content to verify' ) );
 
-		composer( {
+		phpunit( {
 			params: {
-				path: 'test'
+				path: 'test',
+				rawArgs: 'argument'
 			}
 		}, socketStub ).then( function() {
 			assert( progress.length, 1 );
