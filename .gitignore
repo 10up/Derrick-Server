@@ -4,6 +4,7 @@ logs/
 projects/
 node_modules
 _cache/
+coverage/
 /tmp/**/*
 log.txt
 manifest.json
@@ -14,3 +15,4 @@ sys/portmap.json
 Customfile
 aliases
 !config/aliases
+test-report.xml

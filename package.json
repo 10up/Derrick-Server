@@ -3,7 +3,11 @@
   "version": "0.1.1",
   "description": "Server utility for Derrick's Docker operations.",
   "main": "derrick-server.js",
-  "scripts": {},
+  "scripts": {
+    "test": "node_modules/.bin/mocha --reporter spec --bail --check-leaks test/ test/commands",
+    "test:cov": "node_modules/.bin/istanbul cover node_modules/mocha/bin/_mocha -- --reporter dot test/ test/commands",
+    "test:jenkins": "./node_modules/.bin/mocha --recursive -R xunit test/ > test-report.xml"
+  },
   "author": {
     "name": "Eric Mann",
     "email": "eric.mann@10up.com",
