@@ -29,11 +29,6 @@ var socketStub = {
  */
 describe( 'composer', function() {
 
-	afterEach( function() {
-		process.stdout.clearLine();
-		process.stdout.cursorTo(0);
-	} );
-
 	it( 'Fail because no composer.json', function( done ) {
 
 		var composer = proxyquire(
