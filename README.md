@@ -11,9 +11,9 @@ This module is not installed separately; Derrick will automatically install the 
 
 ### Release History
 
- * 2015-06-09???v0.1.2???Introduce Mocha unit testing for passthru commands
- * 2015-05-15???v0.1.1???Version bump for NPM update purposes
- * 2015-05-15???v0.1.0???Initial release
+ * 2015-06-09   v0.1.2   Introduce Mocha unit testing for passthru commands
+ * 2015-05-15   v0.1.1   Version bump for NPM update purposes
+ * 2015-05-15   v0.1.0   Initial release
 
 ## Copyright / License
 
