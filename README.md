@@ -1,7 +1,7 @@
 Derrick-Server
 ==============
 
-[![Build Status](http://45.33.25.19:8080/buildStatus/icon?job=Derrick Server&build=1)](http://45.33.25.19:8080/job/Derrick Server/1/)
+[![Build Status](http://45.33.25.19:8080/buildStatus/icon?job=Derrick Server)](http://45.33.25.19:8080/job/Derrick Server/)
 
 Derrick Server is the global CLI application used within the Derrick VM instance for controlling Docker containers and site instantiation.
 
