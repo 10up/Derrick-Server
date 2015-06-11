@@ -81,7 +81,7 @@ function getDomainInfo( host ) {
 
 	// First read the portmap
 	try {
-		portmap = require( '../portmap' );
+		portmap = require( '/srv/system/portmap' );
 		delete require.cache['/srv/system/portmap.json'];
 	} catch( e ) {
 		print.log( 'error', 'No portmap available. Setting defaults.' );
@@ -90,7 +90,7 @@ function getDomainInfo( host ) {
 
 	// Read the hosts file
 	try {
-		hosts = require( '../hosts' );
+		hosts = require( '/srv/system/hosts' );
 		delete require.cache['/srv/system/hosts.json'];
  	} catch( e ) {
 		print.log( 'error', 'No hosts file available.' );
@@ -257,7 +257,7 @@ function startDockerContainers( args ) {
 
 		// Get a list of our projects from the hosts.json file
 		try {
-			hosts = require( '../hosts' );
+			hosts = require( '/srv/system/hosts' );
 			delete require.cache['/srv/system/hosts.json'];
 		} catch ( e ) {
 			hosts = {};
