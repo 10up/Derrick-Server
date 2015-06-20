@@ -11,6 +11,7 @@ This module is not installed separately; Derrick will automatically install the 
 
 ### Release History
 
+ * 2015-06-19   v0.1.4   Truncate long database names to <= 16 chars to prevent a MySQL error
  * 2015-06-11   v0.1.3   Force the hosts.json and portmap.json to import from /srv/system
  * 2015-06-09   v0.1.2   Introduce Mocha unit testing for passthru commands
  * 2015-05-15   v0.1.1   Version bump for NPM update purposes
