@@ -134,6 +134,11 @@ function close_connection( data ) {
  * @returns {NPromise}
  */
 module.exports = function( args, socket ) {
+	// Truncate the database name - https://github.com/10up/Derrick/issues/28
+	if ( args.params && args.params.database && args.params.database.length > 16 ) {
+		args.params.database = args.params.database.substr( 0, 16 );
+	}
+
 	return new NPromise( function ( fulfill, reject ) {
 		connect( args.params, socket )
 			.then( create, reject )
