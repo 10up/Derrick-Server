@@ -47,7 +47,7 @@ module.exports = function ( args, socket ) {
 	return new NPromise( function ( fulfill, reject ) {
 		var params = args.params;
 
-		var project = params.path;
+		var project = params.project;
 		if ( 0 === project.indexOf( 'projects/' ) ) {
 			project = project.substr( 9 );
 		}
