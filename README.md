@@ -1,15 +1,18 @@
 Derrick-Server
-==============
 
-[![Build Status](http://45.33.25.19:8080/buildStatus/icon?job=Derrick Server)](http://45.33.25.19:8080/job/Derrick Server/)
+> Derrick Server is the global CLI application used within the Derrick VM instance for controlling Docker containers and site instantiation.
 
-Derrick Server is the global CLI application used within the Derrick VM instance for controlling Docker containers and site instantiation.
+[![Support Level](https://img.shields.io/badge/support-archived-red.svg)](#support-level) [![Release Version](https://img.shields.io/github/tag/10up/Derrick-Server.svg)](https://github.com/10up/Derrick-Server/releases/latest) [![MIT License](https://img.shields.io/github/license/10up/Derrick-Server.svg)](https://github.com/10up/Derrick-Server/blob/master/LICENSE.md)
 
-### Installation
+## Installation
 
 This module is not installed separately; Derrick will automatically install the module using NPM during initial provisioning.
 
-### Release History
+## Support Level
+
+**Archived:** This project is no longer maintained by 10up.  We are no longer responding to Issues or Pull Requests unless they relate to security concerns.  We encourage interested developers to fork this project and make it their own!
+
+## Release History
 
  * 2015-06-19   v0.1.4   Truncate long database names to <= 16 chars to prevent a MySQL error
  * 2015-06-11   v0.1.3   Force the hosts.json and portmap.json to import from /srv/system
