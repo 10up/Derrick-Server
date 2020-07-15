@@ -42,7 +42,7 @@
   "dependencies": {
     "commander": "^2.8.1",
     "http-proxy": "^1.11.1",
-    "lodash": "^3.7.0",
+    "lodash": "^4.17.19",
     "mysql": "^2.6.2",
     "portfinder": "^0.4.0",
     "promise": "^7.0.1",
